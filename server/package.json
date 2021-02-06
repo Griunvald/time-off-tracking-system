@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "firebase-admin": "^9.4.2",
     "helmet": "^4.4.1",
+    "http-errors": "^1.7.2",
     "morgan": "^1.10.0"
   }
 }
