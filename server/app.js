@@ -4,10 +4,8 @@ const cors = require('cors');
 const app = express();
 const helmet = require('helmet');
 const morgan = require('morgan');
-const admin = require('firebase-admin');
 
 const authRoutes = require('./routes/auth_routes');
-const serviceAccount = require('./config/serviceAccountKey.json');
 
 app.use(helmet());
 app.use(express.json());
@@ -18,10 +16,6 @@ app.use(
     origin: process.env.CORS_URL,
   })
 );
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
 
 authRoutes(app);
 
