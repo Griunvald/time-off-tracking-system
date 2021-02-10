@@ -24,23 +24,3 @@ export const signInFirebase = async (creds) => {
     throw error;
   }
 };
-
-export const socialLogin = async (selectProvider) => {
-  let provider;
-  if (selectProvider === 'facebook') {
-    provider = new firebase.auth.FacebookAuthProvider();
-  }
-  if (selectProvider === 'google') {
-    provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-  }
-  try {
-    const response = await firebase.auth().signInWithPopup(provider);
-    if (response.additionalUserInfo.isNewUser) {
-      await setUserProfile(response.user);
-    }
-  } catch (error) {
-    console.log(error.message);
-  }
-};

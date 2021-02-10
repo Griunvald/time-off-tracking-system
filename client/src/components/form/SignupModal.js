@@ -1,12 +1,11 @@
 import React from 'react';
-import { Button, Label, Divider } from 'semantic-ui-react';
+import { Button, Label } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import DynamicInput from './DynamicInput';
 import { signInFirebase } from '../../firebase/firebaseService';
 import ModalWrapper from '../modal/ModalWrapper';
-import SocialLoginButtons from './socialLoginButtons';
 
 const SignupModal = () => {
   const dispatch = useDispatch();
@@ -56,8 +55,6 @@ const SignupModal = () => {
                 color="green"
                 content="Sign up"
               />
-              <Divider horizontal>or</Divider>
-              <SocialLoginButtons />
             </Form>
           )}
         </Formik>
