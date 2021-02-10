@@ -37,8 +37,8 @@ const Navbar = () => {
         <Container>
           <Item>
             <ItemContent>
-              <Header as={Link} to="/" inverted>
-                <HeaderContent as="h1">WHITEBOARD</HeaderContent>
+              <Header as={Link} to="/">
+                <HeaderContent as="h1">TIME OFF</HeaderContent>
               </Header>
             </ItemContent>
           </Item>
@@ -65,7 +65,11 @@ const Navbar = () => {
             ) : (
               <>
                 <Button
-                  secondary
+                  basic
+                  color="black"
+                  style={{
+                    marginRight: '10px',
+                  }}
                   onClick={() =>
                     dispatch(
                       openModal({
@@ -74,16 +78,16 @@ const Navbar = () => {
                     )
                   }
                 >
-                  Log in
+                  LOG IN
                 </Button>
                 <Button
-                  inverted
-                  color="green"
+                  basic
+                  color="black"
                   onClick={() =>
                     dispatch(openModal({ modalType: 'SignupModal' }))
                   }
                 >
-                  Sign up
+                  REGISTER
                 </Button>
               </>
             )}
