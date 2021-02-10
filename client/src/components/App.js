@@ -1,16 +1,20 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import Home from './Home.js';
-
 import Navbar from './Navbar';
+import { Route } from 'react-router-dom';
+import Home from './Home';
+import ModalManager from './modal/ModalManager';
+import { Container } from 'semantic-ui-react';
 import '../CSS/App.css';
 
 const App = () => {
   return (
-    <div className="App">
+    <>
+      <ModalManager />
       <Navbar />
-      <Route path="/" exact component={Home} />
-    </div>
+      <Container className="root-container">
+        <Route path="/" exact component={Home} />
+      </Container>
+    </>
   );
 };
 

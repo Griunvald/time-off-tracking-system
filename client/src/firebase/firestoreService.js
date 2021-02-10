@@ -1,5 +1,4 @@
 import firebase from '../config/firebase';
-import randomNumber from '../utils/randomNumber';
 
 const db = firebase.firestore();
 
@@ -12,6 +11,5 @@ export const setUserProfile = (user) => {
       email: user.email,
       photoURL: user.photoURL || null,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      boardId: randomNumber(),
     });
 };
