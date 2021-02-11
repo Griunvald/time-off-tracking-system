@@ -1,7 +1,8 @@
 import React from 'react';
+import RequestForm from './form/RequestForm';
 
 const Home = () => {
-  return <div>Home page</div>;
+  return <RequestForm />;
 };
 
 export default Home;
