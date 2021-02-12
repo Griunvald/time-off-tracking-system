@@ -1,15 +1,21 @@
 const SET_SELECTED_DAY_RANGE = 'SET_SELECTED_DAY_RANGE';
 
 const initialState = {
-  range: null,
+  // from: null,
+  // to: null,
+  range: {
+    from: null,
+    to: null,
+  },
 };
 
 const calendarReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SELECTED_DAY_RANGE:
+      const { from, to } = action.payload;
       return {
         ...state,
-        range: action.payload,
+        range: { from, to },
       };
     default:
       return state;
