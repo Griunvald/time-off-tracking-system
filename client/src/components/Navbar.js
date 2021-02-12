@@ -33,11 +33,11 @@ const Navbar = () => {
   };
   return (
     <div>
-      <Menu borderless inverted fixed="top">
+      <Menu borderless inverted color="green" fixed="top">
         <Container>
           <Item>
             <ItemContent>
-              <Header as={Link} to="/">
+              <Header as={Link} to="/" inverted>
                 <HeaderContent as="h1">TIME OFF</HeaderContent>
               </Header>
             </ItemContent>
