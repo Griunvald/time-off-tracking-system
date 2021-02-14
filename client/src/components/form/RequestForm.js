@@ -4,18 +4,21 @@ import { useDispatch } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import DynamicTextArea from './DynamicTextArea';
+import DynamicDateInput from './DynamicDateInput';
 
 const RequestForm = () => {
   const dispatch = useDispatch();
   return (
     <div>
       <Formik
-        initialValues={{ text: '' }}
+        initialValues={{ text: '', date: '' }}
         validationSchema={Yup.object({
           text: Yup.string().required(),
+          date: Yup.string().required(),
         })}
         onSubmit={async (values, { setSubmitting, setErrors }) => {
           try {
+            console.log(values);
             setSubmitting(false);
           } catch (error) {
             setErrors({ auth: 'Invalid email or password' });
@@ -24,6 +27,7 @@ const RequestForm = () => {
       >
         {({ isSubmitting, isValid, dirty, errors }) => (
           <Form className="ui form" autoComplete="off">
+            <DynamicDateInput name="date" />
             <DynamicTextArea name="text" />
             {errors.auth && (
               <Label
