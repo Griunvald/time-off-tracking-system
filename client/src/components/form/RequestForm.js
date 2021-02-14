@@ -12,7 +12,7 @@ const RequestForm = () => {
   return (
     <div>
       <Formik
-        initialValues={{ text: '', date: '' }}
+        initialValues={{ text: '', 'start date': '', 'end date': '' }}
         validationSchema={Yup.object({
           text: Yup.string().required(),
           'start date': Yup.string().required(),
@@ -35,6 +35,7 @@ const RequestForm = () => {
               onChange={1}
               startDate={1}
               endDate={1}
+              selectStart
               placeholderText="Select start date"
             />
             <DynamicDateInput
@@ -43,6 +44,7 @@ const RequestForm = () => {
               onChange={1}
               startDate={1}
               endDate={1}
+              selectEnd
               placeholderText="Select end date"
             />
             <DynamicTextArea name="text" />
