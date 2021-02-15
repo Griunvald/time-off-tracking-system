@@ -23,7 +23,10 @@ const RequestForm = () => {
         })}
         onSubmit={async (values, { setSubmitting, setErrors }) => {
           try {
-            db.collection('requests').doc('test').set({
+            db.collection('requests').doc('test user').set({
+              startDate: values['start date'],
+              endDate: values['end date'],
+              text: values.text,
               createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             });
             console.log();
