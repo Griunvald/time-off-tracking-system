@@ -5,6 +5,9 @@ import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import DynamicTextArea from './DynamicTextArea';
 import DynamicDateInput from './DynamicDateInput';
+import firebase from '../../config/firebase';
+
+const db = firebase.firestore();
 
 const RequestForm = () => {
   const dispatch = useDispatch();
@@ -20,6 +23,10 @@ const RequestForm = () => {
         })}
         onSubmit={async (values, { setSubmitting, setErrors }) => {
           try {
+            db.collection('requests').doc('test').set({
+              createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            });
+            console.log();
             console.log(values);
             setSubmitting(false);
             dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
