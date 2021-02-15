@@ -22,8 +22,9 @@ const RequestForm = () => {
           try {
             console.log(values);
             setSubmitting(false);
+            dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
           } catch (error) {
-            setErrors({ auth: 'Invalid email or password' });
+            setErrors({ calendar: 'Invalid dates' });
           }
         }}
       >
@@ -31,20 +32,12 @@ const RequestForm = () => {
           <Form className="ui form" autoComplete="off">
             <DynamicDateInput
               name="start date"
-              selected={1}
-              onChange={1}
-              startDate={1}
-              endDate={1}
-              selectStart
+              dateFormat="MMMM d, yyyy"
               placeholderText="Select start date"
             />
             <DynamicDateInput
               name="end date"
-              selected={1}
-              onChange={1}
-              startDate={1}
-              endDate={1}
-              selectEnd
+              dateFormat="MMMM d, yyyy"
               placeholderText="Select end date"
             />
             <DynamicTextArea name="text" />
