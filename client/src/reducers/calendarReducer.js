@@ -1,11 +1,9 @@
 const SET_SELECTED_DAY_RANGE = 'SET_SELECTED_DAY_RANGE';
 
 const initialState = {
-  // from: null,
-  // to: null,
   range: {
-    startDay: null,
-    endDay: null,
+    'start date': null,
+    'end date': null,
     text: null,
   },
 };
