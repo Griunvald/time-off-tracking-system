@@ -8,6 +8,10 @@ import DynamicDateInput from './DynamicDateInput';
 import firebase from '../../config/firebase';
 import { toast } from 'react-toastify';
 
+const toastOptions = {
+  style: { 'background-color': '#21BA45' },
+};
+
 const db = firebase.firestore();
 const RequestForm = () => {
   const dispatch = useDispatch();
@@ -34,7 +38,7 @@ const RequestForm = () => {
             setSubmitting(false);
             dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
             resetForm();
-            toast.success('Request sent!');
+            toast.success('Request sent!', toastOptions);
           } catch (error) {
             setErrors({ calendar: 'Invalid dates' });
           }
