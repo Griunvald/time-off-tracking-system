@@ -11,7 +11,6 @@ const db = firebase.firestore();
 const RequestForm = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.currentUser);
-  console.log(currentUser.email);
 
   return (
     <div>
@@ -22,7 +21,7 @@ const RequestForm = () => {
           'start date': Yup.string().required(),
           'end date': Yup.string().required(),
         })}
-        onSubmit={async (values, { setSubmitting, setErrors }) => {
+        onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
           try {
             db.collection('requests').doc(currentUser.email).set({
               startDate: values['start date'],
@@ -30,10 +29,10 @@ const RequestForm = () => {
               text: values.text,
               createdAt: firebase.firestore.FieldValue.serverTimestamp(),
             });
-            console.log();
-            console.log(values);
+
             setSubmitting(false);
             dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
+            resetForm();
           } catch (error) {
             setErrors({ calendar: 'Invalid dates' });
           }
