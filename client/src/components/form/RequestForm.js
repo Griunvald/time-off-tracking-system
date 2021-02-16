@@ -34,7 +34,7 @@ const RequestForm = () => {
             setSubmitting(false);
             dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
             resetForm();
-            toast('Request sent!');
+            toast.success('Request sent!');
           } catch (error) {
             setErrors({ calendar: 'Invalid dates' });
           }

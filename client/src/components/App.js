@@ -13,9 +13,9 @@ const App = () => {
     <>
       <ModalManager />
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={5000}
-        hideProgressBar={false}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}
