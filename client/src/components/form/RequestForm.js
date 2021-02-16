@@ -9,7 +9,7 @@ import firebase from '../../config/firebase';
 import { toast } from 'react-toastify';
 
 const toastOptions = {
-  style: { 'background-color': '#21BA45' },
+  style: { backgroundColor: '#21BA45' },
 };
 
 const db = firebase.firestore();
@@ -28,7 +28,7 @@ const RequestForm = () => {
         })}
         onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
           try {
-            db.collection('requests').doc(currentUser.email).set({
+            db.collection(currentUser.email).doc().set({
               startDate: values['start date'],
               endDate: values['end date'],
               text: values.text,
