@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 import DynamicTextArea from './DynamicTextArea';
 import DynamicDateInput from './DynamicDateInput';
 import firebase from '../../config/firebase';
+import { toast } from 'react-toastify';
 
 const db = firebase.firestore();
 const RequestForm = () => {
@@ -33,6 +34,7 @@ const RequestForm = () => {
             setSubmitting(false);
             dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
             resetForm();
+            toast('Request sent!');
           } catch (error) {
             setErrors({ calendar: 'Invalid dates' });
           }
