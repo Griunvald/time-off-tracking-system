@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Label } from 'semantic-ui-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import DynamicTextArea from './DynamicTextArea';
@@ -8,9 +8,10 @@ import DynamicDateInput from './DynamicDateInput';
 import firebase from '../../config/firebase';
 
 const db = firebase.firestore();
-
 const RequestForm = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  console.log(currentUser.email);
 
   return (
     <div>
@@ -23,7 +24,7 @@ const RequestForm = () => {
         })}
         onSubmit={async (values, { setSubmitting, setErrors }) => {
           try {
-            db.collection('requests').doc('test user').set({
+            db.collection('requests').doc(currentUser.email).set({
               startDate: values['start date'],
               endDate: values['end date'],
               text: values.text,
