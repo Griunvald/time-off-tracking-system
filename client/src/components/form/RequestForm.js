@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Label } from 'semantic-ui-react';
+import { Button, Label, FormGroup, Header } from 'semantic-ui-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -18,7 +18,7 @@ const RequestForm = () => {
       <Formik
         initialValues={{ text: '', 'start date': '', 'end date': '' }}
         validationSchema={Yup.object({
-          text: Yup.string().required(),
+          text: Yup.string(),
           'start date': Yup.string().required(),
           'end date': Yup.string().required(),
         })}
@@ -41,18 +41,33 @@ const RequestForm = () => {
         }}
       >
         {({ isSubmitting, isValid, dirty, errors }) => (
-          <Form className="ui form" autoComplete="off">
-            <DynamicDateInput
-              name="start date"
-              dateFormat="MMMM d, yyyy"
-              placeholderText="Select start date"
+          <Form className="ui form request-form" autoComplete="off">
+            <Header
+              as="h2"
+              content="Choose desired time off dates using the date picker"
+              textAlign="center"
+              style={{ marginBottom: '30px' }}
+            ></Header>
+            <FormGroup widths="equal">
+              <DynamicDateInput
+                name="start date"
+                dateFormat="MMMM d, yyyy"
+                placeholderText="Select start date"
+                label="Start date"
+              />
+              <DynamicDateInput
+                name="end date"
+                dateFormat="MMMM d, yyyy"
+                placeholderText="Select end date"
+                label="End date"
+              />
+            </FormGroup>
+            <DynamicTextArea
+              name="text"
+              placeholder="Please, provide a reason"
+              label="Reason (Optional)"
+              className="text-area-font-size"
             />
-            <DynamicDateInput
-              name="end date"
-              dateFormat="MMMM d, yyyy"
-              placeholderText="Select end date"
-            />
-            <DynamicTextArea name="text" />
             {errors.auth && (
               <Label
                 basic
@@ -66,9 +81,9 @@ const RequestForm = () => {
               disabled={!isValid || !dirty || isSubmitting}
               type="submit"
               fluid
-              size="large"
+              size="big"
               color="green"
-              content="Send"
+              content="Send request"
             />
           </Form>
         )}
