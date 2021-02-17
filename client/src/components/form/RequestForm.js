@@ -28,12 +28,16 @@ const RequestForm = () => {
         })}
         onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
           try {
-            db.collection(currentUser.email).doc().set({
-              startDate: values['start date'],
-              endDate: values['end date'],
-              text: values.text,
-              createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            });
+            db.collection('users_requests')
+              .doc(currentUser.email)
+              .collection(currentUser.email)
+              .doc()
+              .set({
+                startDate: values['start date'],
+                endDate: values['end date'],
+                text: values.text,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+              });
 
             setSubmitting(false);
             dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
