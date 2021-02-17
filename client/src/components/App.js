@@ -7,6 +7,7 @@ import { Container } from 'semantic-ui-react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../CSS/App.css';
+import MyRequests from './MyRequests';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <Navbar />
       <Container className="root-container">
         <Route path="/" exact component={Home} />
+        <Route path="/my-requests" component={MyRequests} />
       </Container>
     </>
   );
