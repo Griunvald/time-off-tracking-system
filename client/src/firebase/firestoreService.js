@@ -10,6 +10,7 @@ export const setUserProfile = (user) => {
       displayName: user.displayName,
       email: user.email,
       photoURL: user.photoURL || null,
+      role: 'user',
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
 };

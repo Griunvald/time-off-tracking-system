@@ -15,7 +15,7 @@ const toastOptions = {
 const db = firebase.firestore();
 const RequestForm = () => {
   const dispatch = useDispatch();
-  const currentUser = useSelector((state) => state.auth.currentUser);
+  // const currentUser = useSelector((state) => state.auth.currentUser);
 
   return (
     <div>
@@ -29,8 +29,8 @@ const RequestForm = () => {
         onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
           try {
             db.collection('users_requests')
-              .doc(currentUser.email)
-              .collection(currentUser.email)
+              .doc('me@mail.com')
+              .collection('me@mail.com')
               .doc()
               .set({
                 startDate: values['start date'],
