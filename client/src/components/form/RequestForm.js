@@ -36,6 +36,7 @@ const RequestForm = () => {
                 startDate: values['start date'],
                 endDate: values['end date'],
                 text: values.text,
+                status: 'pending',
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
               });
 
