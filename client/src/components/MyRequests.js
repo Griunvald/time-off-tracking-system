@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
-import { Table } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 const db = firebase.firestore();
 
 const MyRequests = () => {
@@ -18,33 +18,31 @@ const MyRequests = () => {
     });
   }, []);
   const dispatch = useDispatch();
-  const requestsData = useSelector((state) => state.userRequests.requests);
+  let requestsData = [];
+  requestsData.push(useSelector((state) => state.userRequests.requests));
   console.log(requestsData);
 
   return (
     <div>
-      <h2>My requests</h2>
-      <Table basic="very">
+      <h2 style={{ padding: '80px 0 20px' }}>My requests</h2>
+      <Table celled stripped>
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Created at</Table.HeaderCell>
             <Table.HeaderCell>Status</Table.HeaderCell>
+            <Table.HeaderCell>Cancel</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-
         <Table.Body>
-          <Table.Row>
-            <Table.Cell>John</Table.Cell>
-            <Table.Cell>Approved</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Jamie</Table.Cell>
-            <Table.Cell>Approved</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Jill</Table.Cell>
-            <Table.Cell>Denied</Table.Cell>
-          </Table.Row>
+          {requestsData[0].map((item) => (
+            <Table.Row>
+              <Table.Cell>{item.createdAt.seconds}</Table.Cell>
+              <Table.Cell>{item.status}</Table.Cell>
+              <Table.Cell>
+                <Icon name="remove" />
+              </Table.Cell>
+            </Table.Row>
+          ))}
         </Table.Body>
       </Table>
     </div>
