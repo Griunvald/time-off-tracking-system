@@ -1,15 +1,13 @@
 const GET_USER_REQUESTS = 'GET_USER_REQUESTS';
 
 const initialState = {
-  requests: [
-    {
-      createdAt: null,
-      startDate: null,
-      endDate: null,
-      text: null,
-      status: null,
-    },
-  ],
+  requests: {
+    createdAt: null,
+    startDate: null,
+    endDate: null,
+    text: null,
+    status: null,
+  },
 };
 
 const userRequestsReducer = (state = initialState, action) => {
@@ -18,7 +16,7 @@ const userRequestsReducer = (state = initialState, action) => {
       const requests = action.payload;
       return {
         ...state,
-        requests: [requests],
+        requests: requests,
       };
     default:
       return state;
