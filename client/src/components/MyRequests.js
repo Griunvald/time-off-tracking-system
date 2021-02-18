@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
 import { Table, Icon, Label } from 'semantic-ui-react';
+const moment = require('moment');
 const db = firebase.firestore();
 
 const MyRequests = () => {
@@ -36,7 +37,9 @@ const MyRequests = () => {
         <Table.Body>
           {requestsData[0].map((item) => (
             <Table.Row>
-              <Table.Cell>{item.createdAt.seconds}</Table.Cell>
+              <Table.Cell>
+                {moment.unix(item.createdAt.seconds).toString().slice(0, -18)}
+              </Table.Cell>
               <Table.Cell>
                 <Label horizontal color="yellow">
                   {item.status}
