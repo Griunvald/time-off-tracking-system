@@ -24,7 +24,7 @@ const MyRequests = () => {
 
   return (
     <div>
-      <h2 style={{ padding: '80px 0 20px' }}>My requests</h2>
+      <h3 style={{ padding: '80px 0 20px' }}>My requests</h3>
       <Table celled stripped>
         <Table.Header>
           <Table.Row>
