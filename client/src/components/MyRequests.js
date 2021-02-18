@@ -29,7 +29,9 @@ const MyRequests = () => {
       <Table celled stripped>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Created at</Table.HeaderCell>
+            <Table.HeaderCell>Requested</Table.HeaderCell>
+            <Table.HeaderCell>From</Table.HeaderCell>
+            <Table.HeaderCell>To</Table.HeaderCell>
             <Table.HeaderCell>Status</Table.HeaderCell>
             <Table.HeaderCell>Cancel</Table.HeaderCell>
           </Table.Row>
@@ -38,7 +40,13 @@ const MyRequests = () => {
           {requestsData[0].map((item) => (
             <Table.Row>
               <Table.Cell>
-                {moment.unix(item.createdAt.seconds).toString().slice(0, -18)}
+                {moment.unix(item.createdAt.seconds).toString().slice(3, -18)}
+              </Table.Cell>
+              <Table.Cell>
+                {moment.unix(item.startDate.seconds).toString().slice(0, -18)}
+              </Table.Cell>
+              <Table.Cell>
+                {moment.unix(item.endDate.seconds).toString().slice(0, -18)}
               </Table.Cell>
               <Table.Cell>
                 <Label horizontal color="yellow">
