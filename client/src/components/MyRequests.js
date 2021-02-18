@@ -49,7 +49,16 @@ const MyRequests = () => {
                 {moment.unix(item.endDate.seconds).toString().slice(0, -18)}
               </Table.Cell>
               <Table.Cell>
-                <Label horizontal color="yellow">
+                <Label
+                  horizontal
+                  color={
+                    item.status === 'pending'
+                      ? 'yellow'
+                      : item.status === 'approved'
+                      ? 'green'
+                      : 'red'
+                  }
+                >
                   {item.status}
                 </Label>
               </Table.Cell>
