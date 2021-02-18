@@ -16,6 +16,14 @@ const db = firebase.firestore();
 const RequestForm = () => {
   const dispatch = useDispatch();
   // const currentUser = useSelector((state) => state.auth.currentUser);
+  const requestRef = db
+    .collection('users_requests')
+    .doc('user_one@mail.com')
+    .collection('user_one@mail.com');
+
+  requestRef.onSnapshot((snapshot) => {
+    snapshot.forEach((doc) => console.log(doc.data()));
+  });
 
   return (
     <div>
@@ -29,8 +37,8 @@ const RequestForm = () => {
         onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
           try {
             db.collection('users_requests')
-              .doc('me@mail.com')
-              .collection('me@mail.com')
+              .doc('user_one@mail.com')
+              .collection('user_one@mail.com')
               .doc()
               .set({
                 startDate: values['start date'],
