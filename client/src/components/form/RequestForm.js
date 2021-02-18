@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Label, FormGroup, Header } from 'semantic-ui-react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import DynamicTextArea from './DynamicTextArea';
@@ -16,14 +16,6 @@ const db = firebase.firestore();
 const RequestForm = () => {
   const dispatch = useDispatch();
   // const currentUser = useSelector((state) => state.auth.currentUser);
-  const requestRef = db
-    .collection('users_requests')
-    .doc('user_one@mail.com')
-    .collection('user_one@mail.com');
-
-  requestRef.onSnapshot((snapshot) => {
-    snapshot.forEach((doc) => console.log(doc.data()));
-  });
 
   return (
     <div>
