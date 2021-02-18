@@ -1,16 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import firebase from './../config/firebase';
 import { Table } from 'semantic-ui-react';
 const db = firebase.firestore();
 
 const MyRequests = () => {
+  const dispatch = useDispatch();
+
   const requestRef = db
     .collection('users_requests')
     .doc('user_one@mail.com')
     .collection('user_one@mail.com');
 
   requestRef.onSnapshot((snapshot) => {
-    snapshot.forEach((doc) => console.log(doc.data()));
+    let arr = [];
+    snapshot.forEach((doc) => arr.push(doc.data()));
+    dispatch({ type: 'GET_USER_REQUESTS', payload: arr });
   });
 
   return (
