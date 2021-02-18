@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
-import { Table, Icon } from 'semantic-ui-react';
+import { Table, Icon, Label } from 'semantic-ui-react';
 const db = firebase.firestore();
 
 const MyRequests = () => {
@@ -37,7 +37,11 @@ const MyRequests = () => {
           {requestsData[0].map((item) => (
             <Table.Row>
               <Table.Cell>{item.createdAt.seconds}</Table.Cell>
-              <Table.Cell>{item.status}</Table.Cell>
+              <Table.Cell>
+                <Label horizontal color="yellow">
+                  {item.status}
+                </Label>
+              </Table.Cell>
               <Table.Cell>
                 <Icon name="remove" />
               </Table.Cell>
