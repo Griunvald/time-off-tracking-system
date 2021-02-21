@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Label, FormGroup, Header } from 'semantic-ui-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import DynamicTextArea from './DynamicTextArea';
@@ -15,7 +15,7 @@ const toastOptions = {
 const db = firebase.firestore();
 const RequestForm = () => {
   const dispatch = useDispatch();
-  // const currentUser = useSelector((state) => state.auth.currentUser);
+  const currentUser = useSelector((state) => state.auth.currentUser);
 
   return (
     <div>
@@ -29,8 +29,8 @@ const RequestForm = () => {
         onSubmit={async (values, { setSubmitting, setErrors, resetForm }) => {
           try {
             db.collection('users_requests')
-              .doc('user_one@mail.com')
-              .collection('user_one@mail.com')
+              .doc(currentUser.email)
+              .collection(currentUser.email)
               .doc()
               .set({
                 startDate: values['start date'],

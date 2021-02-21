@@ -16,7 +16,7 @@ const MyRequests = () => {
     if (currentUser) {
       const requestRef = db
         .collection('users_requests')
-        .doc('user_one@mail.com')
+        .doc(currentUser.email)
         .collection(currentUser.email);
 
       requestRef.get().then((snapshot) => {
