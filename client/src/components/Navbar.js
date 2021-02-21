@@ -53,7 +53,10 @@ const Navbar = () => {
                     'https://graph.facebook.com/100179352095773/picture'
                   }
                 />
-                <Dropdown pointing="top right" text={currentUser.displayName}>
+                <Dropdown
+                  pointing="top right"
+                  text={currentUser.displayName || currentUser.email}
+                >
                   <Dropdown.Menu>
                     <Dropdown.Item
                       text="Log Out"
