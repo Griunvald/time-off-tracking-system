@@ -29,7 +29,7 @@ const MyRequests = () => {
 
   const requests = useSelector((state) => state.userRequests.requests);
 
-  if (currentUser) {
+  if (currentUser && requests.length !== 0) {
     return (
       <div>
         <h3 style={{ padding: '80px 0 20px' }}>My requests</h3>
