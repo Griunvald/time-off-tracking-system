@@ -37,36 +37,37 @@ const MyRequests = () => {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {requests.map((item) => (
-            <Table.Row>
-              <Table.Cell>
-                {moment.unix(item.createdAt.seconds).toString().slice(3, -18)}
-              </Table.Cell>
-              <Table.Cell>
-                {moment.unix(item.startDate.seconds).toString().slice(0, -18)}
-              </Table.Cell>
-              <Table.Cell>
-                {moment.unix(item.endDate.seconds).toString().slice(0, -18)}
-              </Table.Cell>
-              <Table.Cell>
-                <Label
-                  horizontal
-                  color={
-                    item.status === 'pending'
-                      ? 'yellow'
-                      : item.status === 'approved'
-                      ? 'green'
-                      : 'red'
-                  }
-                >
-                  {item.status}
-                </Label>
-              </Table.Cell>
-              <Table.Cell>
-                <Icon name="remove" />
-              </Table.Cell>
-            </Table.Row>
-          ))}
+          {requests.map &&
+            requests.map((item) => (
+              <Table.Row key={item.id}>
+                <Table.Cell>
+                  {moment.unix(item.createdAt.seconds).toString().slice(3, -18)}
+                </Table.Cell>
+                <Table.Cell>
+                  {moment.unix(item.startDate.seconds).toString().slice(0, -18)}
+                </Table.Cell>
+                <Table.Cell>
+                  {moment.unix(item.endDate.seconds).toString().slice(0, -18)}
+                </Table.Cell>
+                <Table.Cell>
+                  <Label
+                    horizontal
+                    color={
+                      item.status === 'pending'
+                        ? 'yellow'
+                        : item.status === 'approved'
+                        ? 'green'
+                        : 'red'
+                    }
+                  >
+                    {item.status}
+                  </Label>
+                </Table.Cell>
+                <Table.Cell>
+                  <Icon name="remove" />
+                </Table.Cell>
+              </Table.Row>
+            ))}
         </Table.Body>
       </Table>
     </div>
