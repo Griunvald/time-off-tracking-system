@@ -26,7 +26,7 @@ const MyRequests = () => {
   return (
     <div>
       <h3 style={{ padding: '80px 0 20px' }}>My requests</h3>
-      <Table celled stripped>
+      <Table celled stripped="true">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Requested</Table.HeaderCell>
