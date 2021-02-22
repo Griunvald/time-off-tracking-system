@@ -1,4 +1,5 @@
 const GET_USER_REQUESTS = 'GET_USER_REQUESTS';
+const SET_USER_REQUESTS = 'SET_USER_REQUESTS';
 
 const initialState = {
   requests: {
@@ -16,7 +17,12 @@ const userRequestsReducer = (state = initialState, action) => {
       const requests = action.payload;
       return {
         ...state,
-        requests: requests,
+        requests,
+      };
+    case SET_USER_REQUESTS:
+      return {
+        ...state,
+        requests,
       };
     default:
       return state;

@@ -35,6 +35,7 @@ const MyRequests = () => {
       return request.id !== id;
     });
     console.log(filtered);
+    dispatch({ type: 'GET_USER_REQUESTS', payload: filtered });
   };
   if (currentUser && requests.length !== 0) {
     return (
