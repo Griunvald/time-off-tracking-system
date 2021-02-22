@@ -14,12 +14,12 @@ const MyRequests = () => {
   console.log(currentUser);
   useEffect(() => {
     if (currentUser) {
-      const requestRef = db
+      const requestsRef = db
         .collection('users_requests')
         .doc(currentUser.email)
         .collection(currentUser.email);
 
-      requestRef.get().then((snapshot) => {
+      requestsRef.get().then((snapshot) => {
         const requests = firebaseLooper(snapshot);
         console.log(requests);
         dispatch({ type: 'GET_USER_REQUESTS', payload: requests });
@@ -36,6 +36,18 @@ const MyRequests = () => {
     });
     console.log(filtered);
     dispatch({ type: 'GET_USER_REQUESTS', payload: filtered });
+    const selectedRequestRef = db
+      .collection('users_requests')
+      .doc(currentUser.email)
+      .collection(currentUser.email)
+      .doc(id);
+
+    selectedRequestRef
+      .delete()
+      .then(() => {
+        console.log(`Request with id ${id} was removed`);
+      })
+      .catch((err) => console.log(err));
   };
   if (currentUser && requests.length !== 0) {
     return (
