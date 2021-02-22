@@ -29,6 +29,13 @@ const MyRequests = () => {
 
   const requests = useSelector((state) => state.userRequests.requests);
 
+  const deleteRequest = (id) => {
+    console.log(id);
+    const filtered = requests.filter((request) => {
+      return request.id !== id;
+    });
+    console.log(filtered);
+  };
   if (currentUser && requests.length !== 0) {
     return (
       <div>
@@ -76,7 +83,11 @@ const MyRequests = () => {
                       {item.status}
                     </Label>
                   </Table.Cell>
-                  <Table.Cell>
+                  <Table.Cell
+                    onClick={() => {
+                      deleteRequest(item.id);
+                    }}
+                  >
                     <Icon name="remove" />
                   </Table.Cell>
                 </Table.Row>
