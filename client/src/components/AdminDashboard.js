@@ -29,10 +29,12 @@ const AdminDashboard = () => {
           const requests = firebaseLooper(snapshot);
           if (requests.length > 0) {
             requstsList.push(...requests);
-            dispatch({ type: 'GET_ALL_USERS_REQUESTS', payload: requstsList });
           }
         });
       });
+
+      dispatch({ type: 'GET_ALL_USERS_REQUESTS', payload: requstsList });
+
       console.log(requstsList);
     });
   }, [dispatch]);
