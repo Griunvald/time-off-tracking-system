@@ -50,6 +50,8 @@ const AdminDashboard = () => {
         <Table celled stripped="true">
           <Table.Header>
             <Table.Row>
+              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Email</Table.HeaderCell>
               <Table.HeaderCell>Requested</Table.HeaderCell>
               <Table.HeaderCell>From</Table.HeaderCell>
               <Table.HeaderCell>To</Table.HeaderCell>
@@ -60,6 +62,8 @@ const AdminDashboard = () => {
             {allRequests.map &&
               allRequests.map((item) => (
                 <Table.Row key={item.id}>
+                  <Table.Cell>{item.user}</Table.Cell>
+                  <Table.Cell>{item.email}</Table.Cell>
                   <Table.Cell>
                     {moment
                       .unix(item.createdAt.seconds)

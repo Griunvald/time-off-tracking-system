@@ -38,6 +38,8 @@ const RequestForm = () => {
                 text: values.text,
                 status: 'pending',
                 createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                user: currentUser.displayName,
+                email: currentUser.email,
               });
 
             setSubmitting(false);

@@ -8,6 +8,8 @@ const initialState = {
     endDate: null,
     text: null,
     status: null,
+    user: null,
+    email: null,
   },
 };
 
