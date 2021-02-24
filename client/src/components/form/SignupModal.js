@@ -31,7 +31,7 @@ const SignupModal = () => {
         >
           {({ isSubmitting, isValid, dirty, errors }) => (
             <Form className="ui form" autoComplete="off">
-              <DynamicInput name="displayName" placeholder="Display name" />
+              <DynamicInput name="displayName" placeholder="Full name" />
               <DynamicInput name="email" placeholder="Email address" />
               <DynamicInput
                 name="password"
