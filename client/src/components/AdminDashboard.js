@@ -50,7 +50,7 @@ const AdminDashboard = () => {
         <Table celled stripped="true">
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
+              <Table.HeaderCell>Full Name</Table.HeaderCell>
               <Table.HeaderCell>Email</Table.HeaderCell>
               <Table.HeaderCell>Requested</Table.HeaderCell>
               <Table.HeaderCell>From</Table.HeaderCell>
