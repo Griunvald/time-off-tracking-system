@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
 import { firebaseLooper } from '../utils/firebaseLooper';
-import { Table, Label, Loader } from 'semantic-ui-react';
+import { Table, Label, Loader, Button } from 'semantic-ui-react';
 
 const db = firebase.firestore();
 const moment = require('moment');
@@ -55,30 +55,33 @@ const AdminDashboard = () => {
               <Table.HeaderCell>Requested</Table.HeaderCell>
               <Table.HeaderCell>From</Table.HeaderCell>
               <Table.HeaderCell>To</Table.HeaderCell>
+              <Table.HeaderCell>Reason</Table.HeaderCell>
               <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>Actions</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             {allRequests.map &&
               allRequests.map((item) => (
                 <Table.Row key={item.id}>
-                  <Table.Cell>{item.user}</Table.Cell>
-                  <Table.Cell>{item.email}</Table.Cell>
-                  <Table.Cell>
+                  <Table.Cell singleLine>{item.user}</Table.Cell>
+                  <Table.Cell singleLine>{item.email}</Table.Cell>
+                  <Table.Cell singleLine>
                     {moment
                       .unix(item.createdAt.seconds)
                       .toString()
                       .slice(3, -18)}
                   </Table.Cell>
-                  <Table.Cell>
+                  <Table.Cell singleLine>
                     {moment
                       .unix(item.startDate.seconds)
                       .toString()
                       .slice(0, -18)}
                   </Table.Cell>
-                  <Table.Cell>
+                  <Table.Cell singleLine>
                     {moment.unix(item.endDate.seconds).toString().slice(0, -18)}
                   </Table.Cell>
+                  <Table.Cell>{item.text}</Table.Cell>
                   <Table.Cell>
                     <Label
                       horizontal
@@ -92,6 +95,16 @@ const AdminDashboard = () => {
                     >
                       {item.status}
                     </Label>
+                  </Table.Cell>
+                  <Table.Cell singleLine>
+                    <div>
+                      <Button size="mini" color="green">
+                        Approve
+                      </Button>
+                      <Button size="mini" color="red">
+                        Decline
+                      </Button>
+                    </div>
                   </Table.Cell>
                 </Table.Row>
               ))}

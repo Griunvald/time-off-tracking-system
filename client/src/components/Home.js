@@ -12,13 +12,15 @@ const Home = () => {
         <AdminDashboard />
       </>
     );
-  } else {
+  } else if (currentUser) {
     return (
       <>
         <RequestForm />
         <MyRequests />
       </>
     );
+  } else {
+    return null;
   }
 };
 
