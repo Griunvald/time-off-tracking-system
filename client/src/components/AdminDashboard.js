@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
 import { firebaseLooper } from '../utils/firebaseLooper';
-import { Table, Label } from 'semantic-ui-react';
+import { Table, Label, Loader } from 'semantic-ui-react';
 
 const db = firebase.firestore();
 const moment = require('moment');
 
 const AdminDashboard = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
+  let isLoading = useSelector((state) => state.admin.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,8 +33,9 @@ const AdminDashboard = () => {
           }
         });
       });
-
-      dispatch({ type: 'GET_ALL_USERS_REQUESTS', payload: requstsList });
+      setTimeout(() => {
+        dispatch({ type: 'GET_ALL_USERS_REQUESTS', payload: requstsList });
+      }, 1000);
 
       console.log(requstsList);
     });
@@ -43,6 +45,7 @@ const AdminDashboard = () => {
   if (currentUser && allRequests.length !== 0) {
     return (
       <div>
+        <Loader active={isLoading} size="massive" />
         <h3 style={{ padding: '80px 0 20px' }}>Admin Dashbord</h3>
         <Table celled stripped="true">
           <Table.Header>
