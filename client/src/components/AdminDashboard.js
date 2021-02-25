@@ -40,6 +40,26 @@ const AdminDashboard = () => {
       console.log(requstsList);
     });
   }, [dispatch]);
+
+  const changeStatus = (status, email, id) => {
+    const docRef = db
+      .collection('users_requests')
+      .doc(email)
+      .collection(email)
+      .doc(id);
+
+    return docRef
+      .update({
+        status,
+      })
+      .then(() => {
+        console.log('Document successfully updated to ', status);
+      })
+      .catch((error) => {
+        console.error('Error updating document: ', error);
+      });
+  };
+
   const allRequests = useSelector((state) => state.admin.requests);
 
   if (currentUser && allRequests.length !== 0) {
@@ -98,10 +118,22 @@ const AdminDashboard = () => {
                   </Table.Cell>
                   <Table.Cell singleLine>
                     <div>
-                      <Button size="mini" color="green">
+                      <Button
+                        size="mini"
+                        color="green"
+                        onClick={() =>
+                          changeStatus('approved', item.email, item.id)
+                        }
+                      >
                         Approve
                       </Button>
-                      <Button size="mini" color="red">
+                      <Button
+                        size="mini"
+                        color="red"
+                        onClick={() =>
+                          changeStatus('declined', item.email, item.id)
+                        }
+                      >
                         Decline
                       </Button>
                     </div>
