@@ -96,12 +96,14 @@ const MyRequests = () => {
                       {item.status}
                     </Label>
                   </Table.Cell>
-                  <Table.Cell
-                    onClick={() => {
-                      deleteRequest(item.id);
-                    }}
-                  >
-                    <Button size="mini" color="red">
+                  <Table.Cell>
+                    <Button
+                      size="mini"
+                      color="red"
+                      onClick={() => {
+                        deleteRequest(item.id);
+                      }}
+                    >
                       Cancel
                     </Button>
                   </Table.Cell>
