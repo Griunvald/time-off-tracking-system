@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
-import { Table, Icon, Label } from 'semantic-ui-react';
+import { Table, Button, Label } from 'semantic-ui-react';
 import { firebaseLooper } from '../utils/firebaseLooper';
 
 const moment = require('moment');
@@ -60,7 +60,7 @@ const MyRequests = () => {
               <Table.HeaderCell>From</Table.HeaderCell>
               <Table.HeaderCell>To</Table.HeaderCell>
               <Table.HeaderCell>Status</Table.HeaderCell>
-              <Table.HeaderCell>Cancel</Table.HeaderCell>
+              <Table.HeaderCell>Action</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -101,7 +101,9 @@ const MyRequests = () => {
                       deleteRequest(item.id);
                     }}
                   >
-                    <Icon name="remove" />
+                    <Button size="mini" color="red">
+                      Cancel
+                    </Button>
                   </Table.Cell>
                 </Table.Row>
               ))}
