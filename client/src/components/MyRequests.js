@@ -10,22 +10,25 @@ const db = firebase.firestore();
 const MyRequests = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.currentUser);
+  const calendar = useSelector((state) => state.calendar.range);
 
   console.log(currentUser);
   useEffect(() => {
-    if (currentUser) {
-      const requestsRef = db
-        .collection('users_requests')
-        .doc(currentUser.email)
-        .collection(currentUser.email);
+    setTimeout(() => {
+      if (currentUser) {
+        const requestsRef = db
+          .collection('users_requests')
+          .doc(currentUser.email)
+          .collection(currentUser.email);
 
-      requestsRef.get().then((snapshot) => {
-        const requests = firebaseLooper(snapshot);
-        console.log(requests);
-        dispatch({ type: 'GET_USER_REQUESTS', payload: requests });
-      });
-    }
-  }, [dispatch, currentUser]);
+        requestsRef.get().then((snapshot) => {
+          const requests = firebaseLooper(snapshot);
+          console.log(requests);
+          dispatch({ type: 'GET_USER_REQUESTS', payload: requests });
+        });
+      }
+    }, 1000);
+  }, [dispatch, currentUser, calendar]);
 
   const requests = useSelector((state) => state.userRequests.requests);
 
