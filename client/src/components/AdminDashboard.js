@@ -65,7 +65,9 @@ const AdminDashboard = () => {
   if (currentUser && allRequests.length !== 0) {
     return (
       <div>
-        <Loader active={isLoading} size="massive" />
+        <Loader active={isLoading} size="massive">
+          Loading requests...
+        </Loader>
         <h3 style={{ padding: '80px 0 20px' }}>Admin Dashbord</h3>
         <Table celled stripped="true">
           <Table.Header>

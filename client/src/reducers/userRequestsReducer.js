@@ -2,6 +2,7 @@ const GET_USER_REQUESTS = 'GET_USER_REQUESTS';
 const SET_USER_REQUESTS = 'SET_USER_REQUESTS';
 
 const initialState = {
+  loading: true,
   requests: {
     createdAt: null,
     startDate: null,
@@ -20,6 +21,7 @@ const userRequestsReducer = (state = initialState, action) => {
       return {
         ...state,
         requests,
+        loading: false,
       };
     case SET_USER_REQUESTS:
       return {

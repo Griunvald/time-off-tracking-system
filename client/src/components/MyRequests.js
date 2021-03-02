@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
-import { Table, Button, Label } from 'semantic-ui-react';
+import { Table, Button, Label, Loader } from 'semantic-ui-react';
 import { firebaseLooper } from '../utils/firebaseLooper';
 
 const moment = require('moment');
@@ -11,6 +11,7 @@ const MyRequests = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.auth.currentUser);
   const calendar = useSelector((state) => state.calendar.range);
+  let isLoading = useSelector((state) => state.userRequests.loading);
 
   console.log(currentUser);
   useEffect(() => {
@@ -55,6 +56,9 @@ const MyRequests = () => {
   if (currentUser && requests.length !== 0) {
     return (
       <div>
+        <Loader active={isLoading} size="massive">
+          Loading requests...
+        </Loader>
         <h3 style={{ padding: '80px 0 20px' }}>My requests</h3>
         <Table celled stripped="true">
           <Table.Header>
