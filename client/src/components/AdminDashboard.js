@@ -10,6 +10,7 @@ const moment = require('moment');
 const AdminDashboard = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   let isLoading = useSelector((state) => state.admin.loading);
+  const requestUpdateListener = useSelector((state) => state.admin.lastStatus);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const AdminDashboard = () => {
 
       console.log(requstsList);
     });
-  }, [dispatch]);
+  }, [dispatch, requestUpdateListener]);
 
   const changeStatus = (status, email, id) => {
     const docRef = db
@@ -53,7 +54,8 @@ const AdminDashboard = () => {
         status,
       })
       .then(() => {
-        console.log('Document successfully updated to ', status);
+        console.log('Document successfully updated to ', status, id);
+        dispatch({ type: 'UPDATE_STATUS', payload: { status, id } });
       })
       .catch((error) => {
         console.error('Error updating document: ', error);

@@ -1,8 +1,13 @@
 const GET_ALL_USERS_REQUESTS = 'GET_ALL_USERS_REQUESTS';
 const SET_ALL_USERS_REQUESTS = 'SET_ALL_USERS_REQUESTS';
+const UPDATE_STATUS = 'UPDATE_STATUS';
 
 const initialState = {
   loading: true,
+  lastStatus: {
+    status: null,
+    id: null,
+  },
   requests: {
     createdAt: null,
     startDate: null,
@@ -26,6 +31,11 @@ const adminDashboardReducer = (state = initialState, action) => {
       return {
         ...state,
         requests,
+      };
+    case UPDATE_STATUS:
+      return {
+        ...state,
+        lastStatus: action.payload,
       };
     default:
       return state;
