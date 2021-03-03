@@ -1,5 +1,6 @@
 const SIGN_IN_USER = 'SIGN_IN_USER';
 const SIGN_OUT_USER = 'SIGN_OUT_USER';
+const UPDATE_USER_LOCALY = 'UPDATE_USER_LOCALY';
 
 const initialState = {
   authenticated: false,
@@ -23,6 +24,15 @@ const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         authenticated: false,
         currentUser: null,
+      };
+    case UPDATE_USER_LOCALY:
+      return {
+        ...state,
+        currentUser: {
+          displayName: payload.displayName,
+          email: payload.email,
+          photoURL: payload.photoURL,
+        },
       };
     default:
       return state;

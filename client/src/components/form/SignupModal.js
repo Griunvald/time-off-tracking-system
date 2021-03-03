@@ -23,6 +23,7 @@ const SignupModal = () => {
             try {
               await signInFirebase(values);
               setSubmitting(false);
+              dispatch({ type: 'UPDATE_USER_LOCALY', payload: values });
               dispatch({ type: 'CLOSE_MODAL' });
             } catch (error) {
               setErrors({ auth: error.message });
