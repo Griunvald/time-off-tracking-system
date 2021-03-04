@@ -7,6 +7,7 @@ import DynamicTextArea from './DynamicTextArea';
 import DynamicDateInput from './DynamicDateInput';
 import firebase from '../../config/firebase';
 import { toast } from 'react-toastify';
+import { setSelectedDayRange } from '../../actions/calendarActions';
 
 const toastOptions = {
   style: { backgroundColor: '#21BA45' },
@@ -43,7 +44,7 @@ const RequestForm = () => {
               });
 
             setSubmitting(false);
-            dispatch({ type: 'SET_SELECTED_DAY_RANGE', payload: values });
+            dispatch(setSelectedDayRange(values));
             resetForm();
             toast.success('Request sent!', toastOptions);
           } catch (error) {

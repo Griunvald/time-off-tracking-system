@@ -1,16 +1,8 @@
-const SET_SELECTED_START_DAY = 'SET_SELECTED_START_DAY';
-const SET_SELECTED_END_DAY = 'SET_SELECTED_END_DAY';
+const SET_SELECTED_DAY_RANGE = 'SET_SELECTED_DAY_RANGE';
 
-export const setSelectedStartDay = (payload) => {
+export const setSelectedDayRange = (range) => {
   return {
-    action: SET_SELECTED_START_DAY,
-    payload,
-  };
-};
-
-export const setSelectedEndDay = (payload) => {
-  return {
-    action: SET_SELECTED_END_DAY,
-    payload,
+    type: SET_SELECTED_DAY_RANGE,
+    payload: range,
   };
 };
