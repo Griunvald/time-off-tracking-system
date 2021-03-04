@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
 import { Table, Button, Label, Loader } from 'semantic-ui-react';
 import { firebaseLooper } from '../utils/firebaseLooper';
+import { getUserRequests } from '../actions/userRequestsActions';
 
 const moment = require('moment');
 const db = firebase.firestore();
@@ -13,7 +14,6 @@ const MyRequests = () => {
   const calendar = useSelector((state) => state.calendar.range);
   let isLoading = useSelector((state) => state.userRequests.loading);
 
-  console.log(currentUser);
   useEffect(() => {
     setTimeout(() => {
       if (currentUser) {
@@ -25,7 +25,7 @@ const MyRequests = () => {
         requestsRef.get().then((snapshot) => {
           const requests = firebaseLooper(snapshot);
           console.log(requests);
-          dispatch({ type: 'GET_USER_REQUESTS', payload: requests });
+          dispatch(getUserRequests(requests));
         });
       }
     }, 1000);
@@ -34,12 +34,10 @@ const MyRequests = () => {
   const requests = useSelector((state) => state.userRequests.requests);
 
   const deleteRequest = (id) => {
-    console.log(id);
     const filtered = requests.filter((request) => {
       return request.id !== id;
     });
-    console.log(filtered);
-    dispatch({ type: 'GET_USER_REQUESTS', payload: filtered });
+    dispatch(getUserRequests(filtered));
     const selectedRequestRef = db
       .collection('users_requests')
       .doc(currentUser.email)
