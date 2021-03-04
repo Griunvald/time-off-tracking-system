@@ -1,5 +1,4 @@
-const GET_ALL_USERS_REQUESTS = 'GET_ALL_USERS_REQUESTS';
-const UPDATE_STATUS = 'UPDATE_STATUS';
+import { GET_ALL_USERS_REQUESTS, UPDATE_STATUS } from './types';
 
 export const getAllUsersRequests = (requestsList) => {
   return {

@@ -1,4 +1,4 @@
-const SET_SELECTED_DAY_RANGE = 'SET_SELECTED_DAY_RANGE';
+import { SET_SELECTED_DAY_RANGE } from './types';
 
 export const setSelectedDayRange = (range) => {
   return {

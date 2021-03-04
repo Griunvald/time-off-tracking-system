@@ -1,4 +1,4 @@
-const GET_USER_REQUESTS = 'GET_USER_REQUESTS';
+import { GET_USER_REQUESTS } from './types';
 
 export const getUserRequests = (requests) => {
   return {

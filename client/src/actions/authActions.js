@@ -1,6 +1,5 @@
 import firebase from '../config/firebase';
-const SIGN_IN_USER = 'SIGN_IN_USER';
-const SIGN_OUT_USER = 'SIGN_OUT_USER';
+import { SIGN_IN_USER, SIGN_OUT_USER } from './types';
 
 export const signInUser = (user) => {
   return {

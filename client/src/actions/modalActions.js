@@ -1,5 +1,4 @@
-const OPEN_MODAL = 'OPEN_MODAL';
-const CLOSE_MODAL = 'CLOSE_MODAL';
+import { OPEN_MODAL, CLOSE_MODAL } from './types';
 
 export const openModal = (payload) => {
   return {
