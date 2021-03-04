@@ -1,6 +1,8 @@
-const GET_ALL_USERS_REQUESTS = 'GET_ALL_USERS_REQUESTS';
-const SET_ALL_USERS_REQUESTS = 'SET_ALL_USERS_REQUESTS';
-const UPDATE_STATUS = 'UPDATE_STATUS';
+import {
+  GET_ALL_USERS_REQUESTS,
+  SET_ALL_USERS_REQUESTS,
+  UPDATE_STATUS,
+} from '../actions/types';
 
 const initialState = {
   loading: true,

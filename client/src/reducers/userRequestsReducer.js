@@ -1,5 +1,4 @@
-const GET_USER_REQUESTS = 'GET_USER_REQUESTS';
-const SET_USER_REQUESTS = 'SET_USER_REQUESTS';
+import { GET_USER_REQUESTS, SET_USER_REQUESTS } from '../actions/types';
 
 const initialState = {
   loading: true,

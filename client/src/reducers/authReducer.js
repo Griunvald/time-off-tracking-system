@@ -1,6 +1,8 @@
-const SIGN_IN_USER = 'SIGN_IN_USER';
-const SIGN_OUT_USER = 'SIGN_OUT_USER';
-const UPDATE_USER_LOCALY = 'UPDATE_USER_LOCALY';
+import {
+  SIGN_IN_USER,
+  SIGN_OUT_USER,
+  UPDATE_USER_LOCALLY,
+} from '../actions/types';
 
 const initialState = {
   authenticated: false,
@@ -25,7 +27,7 @@ const authReducer = (state = initialState, { type, payload }) => {
         authenticated: false,
         currentUser: null,
       };
-    case UPDATE_USER_LOCALY:
+    case UPDATE_USER_LOCALLY:
       return {
         ...state,
         currentUser: {
