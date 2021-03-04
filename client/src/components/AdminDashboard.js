@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import firebase from './../config/firebase';
 import { firebaseLooper } from '../utils/firebaseLooper';
 import { Table, Label, Loader, Button } from 'semantic-ui-react';
+import {
+  getAllUsersRequests,
+  updateStatus,
+} from '../actions/adminDashboardActions';
 
 const db = firebase.firestore();
 const moment = require('moment');
@@ -35,10 +39,8 @@ const AdminDashboard = () => {
         });
       });
       setTimeout(() => {
-        dispatch({ type: 'GET_ALL_USERS_REQUESTS', payload: requstsList });
+        dispatch(getAllUsersRequests(requstsList));
       }, 1000);
-
-      console.log(requstsList);
     });
   }, [dispatch, requestUpdateListener]);
 
@@ -54,8 +56,7 @@ const AdminDashboard = () => {
         status,
       })
       .then(() => {
-        console.log('Document successfully updated to ', status, id);
-        dispatch({ type: 'UPDATE_STATUS', payload: { status, id } });
+        dispatch(updateStatus({ status, id }));
       })
       .catch((error) => {
         console.error('Error updating document: ', error);
