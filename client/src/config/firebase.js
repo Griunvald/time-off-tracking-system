@@ -5,13 +5,13 @@ import 'firebase/auth';
 import 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAMKdiqRNHnVxCHT4gBa3Ca-JfhccOLRRk',
-  authDomain: 'time-off-tracking-system.firebaseapp.com',
-  projectId: 'time-off-tracking-system',
-  storageBucket: 'time-off-tracking-system.appspot.com',
-  messagingSenderId: '433328230891',
-  appId: '1:433328230891:web:c6f4da4b57f8db8ee989ae',
-  measurementId: 'G-YP6YYX7Y00',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
