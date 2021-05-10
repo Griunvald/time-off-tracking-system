@@ -38,9 +38,9 @@ REACT_APP_MEASUREMENT_ID=YOUR_REACT_APP_MEASUREMENT_ID
 
 Log in using one of the emails listed below:
 
-hazeltaylor@mail.com
-robertrodrigues@mail.com
-ivygarcia@mail.com
+hazeltaylor@mail.com  
+robertrodrigues@mail.com  
+ivygarcia@mail.com  
 charliewilson@mail.com
 
 password: test1234
@@ -49,7 +49,7 @@ Create request
 
 Log in as an admin
 
-admin@mail.com
+email: admin@mail.com  
 password: test1234
 
 On the admin dashboard, all user requests will appear
