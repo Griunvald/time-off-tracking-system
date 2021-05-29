@@ -58,6 +58,11 @@ Mark them as approved or declined
 
 Al changes will be reflected on the user's 'My requests' page
 
+## Demo
+
+![look at this](https://github.com/Griunvald/whiteboard/blob/main/demo/screen-1.png)
+![look at this](https://github.com/Griunvald/whiteboard/blob/main/demo/screen-2.png)
+
 ## License
 
 Attribution-NonCommercial-NoDerivatives 4.0 International
