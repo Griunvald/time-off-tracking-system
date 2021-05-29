@@ -2,6 +2,7 @@ import React from 'react';
 import RequestForm from './form/RequestForm';
 import MyRequests from './MyRequests';
 import AdminDashboard from './AdminDashboard';
+import Intro from './Intro';
 import { useSelector } from 'react-redux';
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
       </>
     );
   } else {
-    return null;
+    return <Intro />;
   }
 };
 

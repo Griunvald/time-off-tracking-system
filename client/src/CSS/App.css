@@ -11,6 +11,15 @@
   width: 100%;
 }
 
+.promo-container {
+  margin-top: 50px;
+}
+
+.promo-header {
+  font-size: 3.5rem !important;
+  margin-bottom: 70px !important;
+}
+
 /* navbar 
 .ui.fixed.menu {
   background-image: linear-gradient(
