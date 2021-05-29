@@ -60,8 +60,8 @@ Al changes will be reflected on the user's 'My requests' page
 
 ## Demo
 
-![look at this](https://github.com/Griunvald/whiteboard/blob/main/demo/screen-1.png)
-![look at this](https://github.com/Griunvald/whiteboard/blob/main/demo/screen-2.png)
+![look at this](https://github.com/Griunvald/time-off-tracking-system/blob/main/demo/screen-1.png)
+![look at this](https://github.com/Griunvald/time-off-tracking-system/blob/main/demo/screen-2.png)
 
 ## License
 
